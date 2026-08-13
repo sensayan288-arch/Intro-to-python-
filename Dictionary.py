@@ -31,14 +31,14 @@ EMP = {
     }
 }
 ________
-print(EMP.get("E1"))
+print(EMP.get("E1"))#details of E1
 _________
-print(EMP.get("E4").get("Department"))
+print(EMP.get("E4").get("Department")) #department of E4
 _________
-max_emp = max(EMP, key=lambda x: EMP[x]["Salary"])
+max_emp = max(EMP, key=lambda x: EMP[x]["Salary"])#employee who got maximum salary
 print(max_emp)
 ___________
-EMP.update({
+EMP.update({#add new record
     "E6": {
         "Name": "Rahul",
         "Designation": "Intern",
