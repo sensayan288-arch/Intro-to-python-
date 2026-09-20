@@ -1,32 +1,28 @@
+import numpy as np
 
-marks = [
+marks = np.array([
     [80, 70, 90],
     [60, 75, 85],
     [90, 88, 95],
     [55, 65, 70],
     [78, 82, 80]
-]
+])
 
 # i
-print("Maximum marks:", max(max(row) for row in marks))
+print("Maximum marks:", np.max(marks))
 
 # ii
-print("Minimum marks:", min(min(row) for row in marks))
+print("Minimum marks:", np.min(marks))
 
 # iii
-total = sum(sum(row) for row in marks)
-average = total / 15
-print("Average marks:", average)
+print("Average marks:", np.mean(marks))
 
 # iv
 print("Maximum marks subject-wise:")
 for j in range(3):
-    maximum = max(marks[i][j] for i in range(5))
-    print("Subject", j + 1, ":", maximum)
+    print("Subject", j + 1, ":", np.max(marks[:, j]))
 
-#v
+# v
 print("Average marks subject-wise:")
 for j in range(3):
-    total = sum(marks[i][j] for i in range(5))
-    average = total / 5
-    print("Subject", j + 1, ":", average)
+    print("Subject", j + 1, ":", np.mean(marks[:, j]))
