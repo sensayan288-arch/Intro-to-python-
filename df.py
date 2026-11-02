@@ -1,21 +1,33 @@
 import pandas as pd
 
-df = pd.read_csv("Titanic-Dataset.csv")
+employees = {
+    "employee_id": [101, 102, 103, 104, 105],
+    "employee_name": ["Ayan", "Riya", "Sima", "Karan", "Binita"],
+    "department": ["IT", "HR", "Sales", "IT", "Finance"],
+    "salary": [35000, 42000, 39000, 50000, 45000]
+}
 
-print(df.head())
+employee_df = pd.DataFrame(employees)
 
-df.drop_duplicates(inplace=True)
-df["Age"] = df["Age"].fillna(df["Age"].median())
-df["Embarked"] = df["Embarked"].fillna(df["Embarked"].mode()[0])
+print(employee_df.head(2))
+print(employee_df.tail(2))
+print(employee_df.loc[employee_df["salary"].idxmax()])
 
-female_passengers = df[(df["Sex"] == "female") & (df["Age"] > 40)]
-print(female_passengers)
+students = {
+    "roll": [1, 2, 3, 4, 5],
+    "name": ["Ayan", "Ria", "Sima", "Kaju", "Binita"],
+    "department": ["CSE", None, "ECE", None, "IT"],
+    "marks": [90, 80, None, 85, 25]
+}
 
-first_class = df[df["Pclass"] == 1]
-print(first_class.describe(include="all"))
+student_df = pd.DataFrame(students)
 
-df["name"] = df["Name"]
-print(df)
+print(student_df.isnull().sum())
 
-df.drop_duplicates(inplace=True)
-print(df)
+student_df["department"] = student_df["department"].fillna("SSE")
+
+student_df.loc[student_df["name"] == "Kaju", "department"] = "VLSI"
+
+student_df = student_df.dropna(subset=["marks"])
+
+print(student_df)
