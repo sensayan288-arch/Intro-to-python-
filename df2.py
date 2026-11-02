@@ -13,5 +13,6 @@ products = {
 
 df = pd.DataFrame(products)
 
+print("Average price:", df["price"].mean())
 print(df[df["price"] > df["price"].mean()])
 print(df[df["price"] > 50])
